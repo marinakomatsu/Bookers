@@ -1,3 +1,4 @@
+<p class="green-word"><%= flash[:notice] %></p>
 <body>
 <h1>Books</h1>
 <table>
@@ -15,14 +16,20 @@
 </table>
 
 <h2>New book</h2>
-
-<%= form_with model: @book do |f| %>
+  <% if @book.errors.any? %>
+  <%= @book.errors.count %>errors prohibited this book from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+ <% end %>
+ 
+ <%= form_with model: @book do |f| %>
    <label>Title</label>
    <div><%= f.text_field :title %></div>
-  
    <label>Body</label>
    <div><%= f.text_area :body %></div>
-  
    <div><%= f.submit 'Create Book' %></div>
-<% end %>
+ <% end %>
 </body>

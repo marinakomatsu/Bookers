@@ -55,3 +55,11 @@ label {
 div {
     padding-bottom: 10px;
 }
+
+.green-word {
+    color: green;
+    font-size: 13px;
+    margin-top: 33px;
+    margin-left: 33px;
+}
+
